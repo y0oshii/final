@@ -1,5 +1,8 @@
 name: final
-on: push
+on:
+  push:
+    tags:
+      - '*'
     
 jobs:
   test:
