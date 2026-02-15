@@ -1,16 +1,23 @@
 name: final
-on: push
-jobs:
-    test:
-         runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v3
-        - uses: actions/setup-go@v4
-        
-        - name: Test
-        run: go test -v ./...
+on:
+  push:
+    branches: [ main ]
     
-    publish:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: golang:1.25.1
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Unit Tests
+        run: GOOS=linux GOARCH=amd64 go test
+
+      - name: Vet
+        run: |
+          go vet ./...
+      
+  publish:
     needs: test
     runs-on: ubuntu-latest
     
