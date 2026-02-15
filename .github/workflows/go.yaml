@@ -36,4 +36,8 @@ jobs:
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.ref_name }} .
 
       - name: Push image
+<<<<<<< HEAD
         run: docker push ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.ref_name }}
+=======
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.ref_name }}
+>>>>>>> 9fea62b711fe9739140f90795d7c93cd6213a325
